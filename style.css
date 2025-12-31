@@ -1,26 +1,162 @@
-/* Update your .navbar section with this */
+/* --- RESET & BASICS --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #000000; /* PURE BLACK BACKGROUND */
+    color: #f4f4f4;
+    overflow-x: hidden;
+}
+
+/* --- NAVIGATION --- */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Ensures logo and text align vertically */
-    padding: 15px 40px;
-    background: rgba(14, 14, 14, 0.9);
-    backdrop-filter: blur(10px);
+    align-items: center;
+    padding: 20px 40px;
+    background: transparent; /* Keep transparent for the hero effect */
     z-index: 1000;
 }
 
-/* New Rule for the GIF Logo */
 .logo img {
-    height: 40px; /* Adjust this number to change logo size */
-    width: auto;
-    display: block;
+    height: 40px;
+    filter: invert(1); /* Makes black logo white if needed */
 }
 
-/* Also nice to invert colors if your logo is black on transparent */
-/* Remove this filter line if your logo is already white */
-.logo img {
-    filter: invert(1); 
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5); /* Readable against art */
+}
+
+.plus-tab {
+    background: #fff;
+    color: #000 !important;
+    padding: 0 10px;
+    border-radius: 50%;
+}
+
+/* --- PARALLAX HERO SECTION --- */
+.hero-parallax {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full screen height */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+}
+
+.parallax-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures images fill screen */
+    pointer-events: none; /* Mouse passes through to text */
+}
+
+/* Layer Specifics (Scale up slightly to prevent white edges when moving) */
+.layer-bg { z-index: 1; transform: scale(1.1); }
+.layer-mid { z-index: 2; transform: scale(1.1); }
+.layer-fg { z-index: 3; transform: scale(1.1); }
+
+.hero-content {
+    z-index: 10; /* Text sits on top of everything */
+    text-align: center;
+    mix-blend-mode: overlay; /* Cool blending effect with the art */
+}
+
+.hero-content h1 {
+    font-size: 8vw;
+    line-height: 0.9;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+/* --- LOGO BELT --- */
+.logo-belt {
+    background: #fff;
+    overflow: hidden;
+    padding: 20px 0;
+    white-space: nowrap;
+    position: relative;
+    z-index: 20; /* Sits above parallax */
+}
+
+.track {
+    display: inline-block;
+    animation: scroll 20s linear infinite;
+}
+
+.logo-belt img {
+    height: 40px;
+    margin: 0 40px;
+    vertical-align: middle;
+}
+
+@keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* --- WORK SECTION --- */
+.fluid-section {
+    padding: 100px 5vw;
+    background: #000; /* Ensures black background continues */
+}
+
+h2 {
+    font-size: 3rem;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #1a1a1a;
+    height: 400px;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card:hover { transform: scale(1.02); }
+
+.placeholder-art {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+}
+
+.card-info {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-weight: bold;
 }
