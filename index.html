@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lucid Creatives</title>
+    <!-- This link looks for style.css in the SAME folder as this file -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,16 +23,19 @@
 
     <!-- PARALLAX HERO SECTION -->
     <section id="home" class="hero-parallax">
-        <!-- 1. BACK: The Background -->
+        
+        <!-- LAYER 1: BACKGROUND (Furthest back) -->
+        <!-- data-speed: Negative numbers move opposite to mouse (depth effect) -->
         <img src="assets/landing_page/BG.png" class="parallax-layer layer-bg" data-speed="-2">
         
-        <!-- 2. MIDDLE: Zilla (The Main Subject) -->
-        <img src="assets/landing_page/Zilla.png" class="parallax-layer layer-mid" data-speed="4">
+        <!-- LAYER 2: MIDDLE (Zilla) -->
+        <!-- data-speed: Small positive number for slight movement -->
+        <img src="assets/landing_page/Zilla.png" class="parallax-layer layer-mid" data-speed="2">
         
-        <!-- 3. FRONT: Foreground Elements -->
-        <img src="assets/landing_page/FG.png" class="parallax-layer layer-fg" data-speed="8">
+        <!-- LAYER 3: FOREGROUND (Closest to screen) -->
+        <!-- data-speed: Higher number = moves faster (appears closer) -->
+        <img src="assets/landing_page/FG.png" class="parallax-layer layer-fg" data-speed="5">
 
-        <!-- Text Overlay (Optional, remove if you just want art) -->
         <div class="hero-content">
             <h1>LUCID <br> CREATIVES</h1>
         </div>
@@ -40,7 +44,6 @@
     <!-- LOGO BELT -->
     <div class="logo-belt">
         <div class="track">
-            <!-- Set 1 -->
             <img src="assets/brands/Asahi.png">
             <img src="assets/brands/DM.png">
             <img src="assets/brands/Disney.png">
@@ -48,7 +51,7 @@
             <img src="assets/brands/Mazda.png">
             <img src="assets/brands/Specsavers.png">
             <img src="assets/brands/Stan.png">
-            <!-- Set 2 (Duplicate) -->
+            <!-- Duplicates -->
             <img src="assets/brands/Asahi.png">
             <img src="assets/brands/DM.png">
             <img src="assets/brands/Disney.png">
@@ -63,30 +66,19 @@
     <section id="work" class="fluid-section">
         <h2>Selected Work</h2>
         <div class="gallery-grid">
-            <div class="card">
-                <div class="placeholder-art">Artwork 1</div> 
-                <div class="card-info">Project Name</div>
-            </div>
-            <div class="card">
-                <div class="placeholder-art">Artwork 2</div>
-                <div class="card-info">Project Name</div>
-            </div>
-             <div class="card">
-                <div class="placeholder-art">Artwork 3</div>
-                <div class="card-info">Project Name</div>
-            </div>
+            <div class="card"><div class="placeholder-art">Art 1</div></div>
+            <div class="card"><div class="placeholder-art">Art 2</div></div>
+            <div class="card"><div class="placeholder-art">Art 3</div></div>
         </div>
     </section>
 
-    <!-- JAVASCRIPT FOR PARALLAX -->
     <script>
         document.addEventListener("mousemove", parallax);
 
         function parallax(e) {
-            // --- EDIT THESE VALUES TO CHANGE INTENSITY ---
-            // Higher number = More movement
-            const sensitivity = 1; 
-            // ---------------------------------------------
+            // !!! CHANGE THIS VALUE TO CONTROL OVERALL INTENSITY !!!
+            // 0.5 = subtle, 1 = normal, 2 = extreme movement
+            const sensitivity = 0.8; 
 
             document.querySelectorAll(".parallax-layer").forEach(function(move){
                 var moving_value = move.getAttribute("data-speed");
