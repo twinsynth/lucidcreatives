@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">YOUR NAME</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#extras" class="plus-tab">+</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero / Home Section -->
+    <section id="home" class="fluid-section hero">
+        <h1>Creative <br> <span>Developer & Artist</span></h1>
+    </section>
+
+    <!-- Logo Belt (Infinite Scroll) -->
+    <div class="logo-belt">
+        <div class="track">
+            <!-- Duplicate logos are needed for the infinite loop effect -->
+            <!-- Replace src with your actual file paths in assets/brands/ -->
+            <img src="assets/brands/brand1.png" alt="Brand 1">
+            <img src="assets/brands/brand2.png" alt="Brand 2">
+            <img src="assets/brands/brand3.png" alt="Brand 3">
+            <img src="assets/brands/brand4.png" alt="Brand 4">
+            <!-- DUPLICATE SET for seamless scrolling -->
+            <img src="assets/brands/brand1.png" alt="Brand 1">
+            <img src="assets/brands/brand2.png" alt="Brand 2">
+            <img src="assets/brands/brand3.png" alt="Brand 3">
+            <img src="assets/brands/brand4.png" alt="Brand 4">
+        </div>
+    </div>
+
+    <!-- Work Section (Artworks) -->
+    <section id="work" class="fluid-section">
+        <h2>Selected Work</h2>
+        <div class="gallery-grid">
+            <!-- Gallery Item 1 -->
+            <div class="card">
+                <img src="assets/artworks/art1.jpg" alt="Artwork 1">
+                <div class="card-info">Project Name</div>
+            </div>
+            <!-- Gallery Item 2 -->
+            <div class="card">
+                <img src="assets/artworks/art2.jpg" alt="Artwork 2">
+                <div class="card-info">Project Name</div>
+            </div>
+            <!-- Gallery Item 3 -->
+            <div class="card">
+                <img src="assets/artworks/art3.jpg" alt="Artwork 3">
+                <div class="card-info">Project Name</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="fluid-section contact-box">
+        <h2>Let's Talk</h2>
+        <a href="mailto:youremail@example.com" class="email-link">youremail@example.com</a>
+    </section>
+
+</body>
+</html>
