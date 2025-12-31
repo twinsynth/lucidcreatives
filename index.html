@@ -8,9 +8,7 @@
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav class="navbar">
-        <!-- Using your logo.gif here -->
         <div class="logo">
             <img src="assets/logo.gif" alt="Lucid Creatives">
         </div>
@@ -22,40 +20,49 @@
         </ul>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="fluid-section hero">
-        <h1>Creative <br> <span>Vision & Design</span></h1>
+    <!-- PARALLAX HERO SECTION -->
+    <section id="home" class="hero-parallax">
+        <!-- 1. BACK: The Background -->
+        <img src="assets/landing_page/BG.png" class="parallax-layer layer-bg" data-speed="-2">
+        
+        <!-- 2. MIDDLE: Zilla (The Main Subject) -->
+        <img src="assets/landing_page/Zilla.png" class="parallax-layer layer-mid" data-speed="4">
+        
+        <!-- 3. FRONT: Foreground Elements -->
+        <img src="assets/landing_page/FG.png" class="parallax-layer layer-fg" data-speed="8">
+
+        <!-- Text Overlay (Optional, remove if you just want art) -->
+        <div class="hero-content">
+            <h1>LUCID <br> CREATIVES</h1>
+        </div>
     </section>
 
-    <!-- Logo Belt (Updated with your real files) -->
+    <!-- LOGO BELT -->
     <div class="logo-belt">
         <div class="track">
-            <!-- FIRST SET OF LOGOS -->
-            <!-- Note: Filenames are Case Sensitive on GitHub! -->
-            <img src="assets/brands/Asahi.png" alt="Asahi">
-            <img src="assets/brands/DM.png" alt="DM">
-            <img src="assets/brands/Disney.png" alt="Disney">
-            <img src="assets/brands/Kerastase.png" alt="Kerastase">
-            <img src="assets/brands/Mazda.png" alt="Mazda">
-            <img src="assets/brands/Specsavers.png" alt="Specsavers">
-            <img src="assets/brands/Stan.png" alt="Stan">
-
-            <!-- SECOND SET (Duplicate for infinite scroll loop) -->
-            <img src="assets/brands/Asahi.png" alt="Asahi">
-            <img src="assets/brands/DM.png" alt="DM">
-            <img src="assets/brands/Disney.png" alt="Disney">
-            <img src="assets/brands/Kerastase.png" alt="Kerastase">
-            <img src="assets/brands/Mazda.png" alt="Mazda">
-            <img src="assets/brands/Specsavers.png" alt="Specsavers">
-            <img src="assets/brands/Stan.png" alt="Stan">
+            <!-- Set 1 -->
+            <img src="assets/brands/Asahi.png">
+            <img src="assets/brands/DM.png">
+            <img src="assets/brands/Disney.png">
+            <img src="assets/brands/Kerastase.png">
+            <img src="assets/brands/Mazda.png">
+            <img src="assets/brands/Specsavers.png">
+            <img src="assets/brands/Stan.png">
+            <!-- Set 2 (Duplicate) -->
+            <img src="assets/brands/Asahi.png">
+            <img src="assets/brands/DM.png">
+            <img src="assets/brands/Disney.png">
+            <img src="assets/brands/Kerastase.png">
+            <img src="assets/brands/Mazda.png">
+            <img src="assets/brands/Specsavers.png">
+            <img src="assets/brands/Stan.png">
         </div>
     </div>
 
-    <!-- Work Section -->
+    <!-- WORK SECTION -->
     <section id="work" class="fluid-section">
         <h2>Selected Work</h2>
         <div class="gallery-grid">
-            <!-- You will need to create 'artworks' folder inside assets and upload images there later -->
             <div class="card">
                 <div class="placeholder-art">Artwork 1</div> 
                 <div class="card-info">Project Name</div>
@@ -71,11 +78,24 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="fluid-section contact-box">
-        <h2>Let's Talk</h2>
-        <a href="mailto:contact@lucidcreatives.com" class="email-link">Get in touch</a>
-    </section>
+    <!-- JAVASCRIPT FOR PARALLAX -->
+    <script>
+        document.addEventListener("mousemove", parallax);
 
+        function parallax(e) {
+            // --- EDIT THESE VALUES TO CHANGE INTENSITY ---
+            // Higher number = More movement
+            const sensitivity = 1; 
+            // ---------------------------------------------
+
+            document.querySelectorAll(".parallax-layer").forEach(function(move){
+                var moving_value = move.getAttribute("data-speed");
+                var x = (e.clientX * moving_value * sensitivity) / 100;
+                var y = (e.clientY * moving_value * sensitivity) / 100;
+
+                move.style.transform = "translateX(" + x + "px) translateY(" + y + "px)";
+            });
+        }
+    </script>
 </body>
 </html>
