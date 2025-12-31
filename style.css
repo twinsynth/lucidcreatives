@@ -1,60 +1,18 @@
-/* --- RESET & BASICS --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* --- RESET --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: #000000; /* PURE BLACK BACKGROUND */
-    color: #f4f4f4;
+    background-color: #000; /* Black BG */
+    color: #fff;
     overflow-x: hidden;
 }
 
-/* --- NAVIGATION --- */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    background: transparent; /* Keep transparent for the hero effect */
-    z-index: 1000;
-}
-
-.logo img {
-    height: 40px;
-    filter: invert(1); /* Makes black logo white if needed */
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.5); /* Readable against art */
-}
-
-.plus-tab {
-    background: #fff;
-    color: #000 !important;
-    padding: 0 10px;
-    border-radius: 50%;
-}
-
-/* --- PARALLAX HERO SECTION --- */
+/* --- HERO PARALLAX STACKING --- */
 .hero-parallax {
     position: relative;
     width: 100%;
-    height: 100vh; /* Full screen height */
+    height: 100vh; /* Fills the screen exactly */
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -63,100 +21,55 @@ body {
 }
 
 .parallax-layer {
-    position: absolute;
+    position: absolute; /* THIS STACKS THEM */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures images fill screen */
-    pointer-events: none; /* Mouse passes through to text */
+    object-fit: cover; /* Ensures they fill the screen without stretching */
+    pointer-events: none; /* Allows mouse to click text/nav through images */
 }
 
-/* Layer Specifics (Scale up slightly to prevent white edges when moving) */
+/* Specific z-index to ensure correct order (BG back, FG front) */
 .layer-bg { z-index: 1; transform: scale(1.1); }
 .layer-mid { z-index: 2; transform: scale(1.1); }
 .layer-fg { z-index: 3; transform: scale(1.1); }
 
 .hero-content {
-    z-index: 10; /* Text sits on top of everything */
+    z-index: 10;
     text-align: center;
-    mix-blend-mode: overlay; /* Cool blending effect with the art */
+    mix-blend-mode: overlay; /* Blends text with image */
 }
-
 .hero-content h1 {
     font-size: 8vw;
     line-height: 0.9;
     text-transform: uppercase;
-    color: #fff;
 }
+
+/* --- NAV --- */
+.navbar {
+    position: fixed;
+    top: 0; width: 100%;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 40px;
+    z-index: 1000;
+}
+.logo img { height: 40px; filter: invert(1); }
+.nav-links { list-style: none; display: flex; gap: 30px; }
+.nav-links a { text-decoration: none; color: #fff; font-weight: bold; }
+.plus-tab { background: #fff; color: #000 !important; padding: 0 10px; border-radius: 50%; }
 
 /* --- LOGO BELT --- */
 .logo-belt {
-    background: #fff;
-    overflow: hidden;
-    padding: 20px 0;
-    white-space: nowrap;
-    position: relative;
-    z-index: 20; /* Sits above parallax */
+    background: #fff; overflow: hidden; padding: 20px 0;
+    white-space: nowrap; position: relative; z-index: 20;
 }
+.track { display: inline-block; animation: scroll 20s linear infinite; }
+.logo-belt img { height: 40px; margin: 0 40px; vertical-align: middle; }
+@keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-.track {
-    display: inline-block;
-    animation: scroll 20s linear infinite;
-}
-
-.logo-belt img {
-    height: 40px;
-    margin: 0 40px;
-    vertical-align: middle;
-}
-
-@keyframes scroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-}
-
-/* --- WORK SECTION --- */
-.fluid-section {
-    padding: 100px 5vw;
-    background: #000; /* Ensures black background continues */
-}
-
-h2 {
-    font-size: 3rem;
-    margin-bottom: 40px;
-    text-transform: uppercase;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.card {
-    background: #1a1a1a;
-    height: 400px;
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-}
-
-.card:hover { transform: scale(1.02); }
-
-.placeholder-art {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #333;
-}
-
-.card-info {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    font-weight: bold;
-}
+/* --- WORK --- */
+.fluid-section { padding: 100px 5vw; background: #000; }
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.card { background: #1a1a1a; height: 400px; border-radius: 12px; }
+.placeholder-art { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #555; }
